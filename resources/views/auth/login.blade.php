@@ -40,12 +40,10 @@
                     <div class="text-center mb-4">
 
                         <div
-                            class="rounded-circle bg-danger text-white d-inline-flex justify-content-center align-items-center"
-                            style="width:80px;height:80px;">
+                            class="text-white d-inline-flex justify-content-center align-items-center"
+                            style="width:200px;height:200px;">
 
-                            <i
-                                class="fas fa-utensils fa-2x">
-                            </i>
+                            <img src="{{ asset('assets/logo-kmb.svg') }}" alt="logo-kmb" class="img-fluid">
 
                         </div>
 

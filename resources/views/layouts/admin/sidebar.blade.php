@@ -3,24 +3,18 @@
     <div class="text-center mb-4">
 
         <div
-            class="bg-danger rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-            style="width:70px;height:70px;">
+            class="d-inline-flex align-items-center justify-content-center mb-3"
+            style="width:150px;height:150px;">
 
-            <i class="fas fa-utensils text-white fs-3"></i>
+            <img src="{{ asset('assets/logo-kmb.svg') }}" alt="logo-kmb" class="img-fluid">
 
         </div>
 
-        <h5 class="fw-bold mb-1">
-
-            Karya Minang Baru
-
-        </h5>
-
-        <small class="text-muted">
+        <h5 class="fw-bold mb-1 text-muted">
 
             Admin Panel
 
-        </small>
+        </h5>
 
     </div>
 
