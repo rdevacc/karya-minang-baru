@@ -49,6 +49,16 @@
         </div>
 
         <a
+            href="{{ route('admin.categories.index') }}"
+            class="list-group-item list-group-item-action border-0 {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
+
+            <i class="fas fa-tags me-2"></i>
+
+            Kategori
+
+        </a>
+
+        <a
             href="{{ route('admin.products.index') }}"
             class="list-group-item list-group-item-action border-0 {{ request()->routeIs('admin.products.*') ? 'active' : '' }}">
 
@@ -58,15 +68,6 @@
 
         </a>
 
-        <a
-            href="{{ route('admin.categories.index') }}"
-            class="list-group-item list-group-item-action border-0 {{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">
-
-            <i class="fas fa-tags me-2"></i>
-
-            Kategori
-
-        </a>
 
         <div class="list-group-item bg-light fw-semibold text-uppercase small text-secondary">
 
@@ -109,30 +110,6 @@
             Laporan
 
         </a>
-
-        {{-- <div class="list-group-item bg-light fw-semibold text-uppercase small text-secondary">
-
-            Sistem
-
-        </div>
-
-        <form
-            action="#"
-            method="POST">
-
-            @csrf
-
-            <button
-                type="submit"
-                class="list-group-item list-group-item-action border-0 text-danger w-100 text-start">
-
-                <i class="fas fa-right-from-bracket me-2"></i>
-
-                Logout
-
-            </button>
-
-        </form> --}}
 
     </div>
 

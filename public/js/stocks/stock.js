@@ -10,6 +10,11 @@ import {
     resetForm
 } from "./stock-ui.js";
 
+import { showToast }
+from "../utils/toast.js";
+
+import { setButtonLoading } from "../utils/button.js";
+
 let products = [];
 
 let histories = [];
@@ -83,7 +88,11 @@ async function submitForm(event) {
 
     event.preventDefault();
 
-    saveButton.disabled = true;
+    setButtonLoading(
+        saveButton,
+        true,
+        'Menyimpan...'
+    );
 
     try {
 
@@ -95,17 +104,20 @@ async function submitForm(event) {
 
         await loadHistory();
 
-        alert("Stok berhasil ditambahkan.");
+        showToast("Stok berhasil ditambahkan.", "success");
 
     } catch (error) {
 
         console.error(error);
 
-        alert(error.message);
+        showToast(error.message, "danger");
 
+    } finally {
+        setButtonLoading(
+            saveButton,
+            false
+        );
     }
-
-    saveButton.disabled = false;
 
 }
 

@@ -36,31 +36,24 @@
 
                     <li>
 
-                        <a
-                            class="dropdown-item"
-                            href="#">
+                        <form
+                            action="{{ route('logout') }}"
+                            method="POST"
+                            class="m-0">
 
-                            Profil
+                            @csrf
 
-                        </a>
+                            <button
+                                type="submit"
+                                class="dropdown-item text-danger">
 
-                    </li>
+                                <i class="fas fa-right-from-bracket me-2"></i>
 
-                    <li>
+                                Logout
 
-                        <hr class="dropdown-divider">
+                            </button>
 
-                    </li>
-
-                    <li>
-
-                        <a
-                            class="dropdown-item text-danger"
-                            href="#">
-
-                            Logout
-
-                        </a>
+                        </form>
 
                     </li>
 

@@ -17,6 +17,11 @@ import {
     hideProductModal
 } from "./product-ui.js";
 
+import { showToast }
+from "../utils/toast.js";
+
+import { setButtonLoading } from "../utils/button.js";
+
 let products = [];
 
 const modalElement = document.getElementById("productModal");
@@ -165,7 +170,11 @@ async function submitForm(event) {
 
     event.preventDefault();
 
-    saveButton.disabled = true;
+    setButtonLoading(
+        saveButton,
+        true,
+        "Menyimpan..."
+    );
 
     try {
 
@@ -198,11 +207,15 @@ async function submitForm(event) {
 
         console.error(error);
 
-        alert("Gagal menyimpan produk.");
+        showToast("Gagal menyimpan produk.", "danger");
 
+    } finally {
+
+        setButtonLoading(
+            saveButton,
+            false
+        );
     }
-
-    saveButton.disabled = false;
 
 }
 
@@ -275,22 +288,33 @@ async function confirmDelete() {
 
     try {
 
-        deleteButton.disabled = true;
+       setButtonLoading(
+        saveButton,
+        true,
+       );
 
         await deleteProduct(deleteId);
 
         deleteModal.hide();
 
+        showToast("Produk berhasil dihapus.", "success");
+
         deleteId = null;
 
         await refreshProducts();
+        
 
     } catch (error) {
 
         console.error(error);
 
-        alert("Gagal menghapus produk.");
+        showToast("Gagal menghapus produk.", "danger");
 
+    } finally {
+        setButtonLoading(
+            saveButton,
+            true
+        );
     }
 
     deleteButton.disabled = false;

@@ -8,6 +8,9 @@ import {
     renderOrders
 } from "./report-ui.js";
 
+import { showToast }
+from "../utils/toast.js";
+
 const startDateInput =
     document.getElementById("startDate");
 
@@ -65,9 +68,7 @@ async function loadReport() {
 
         console.error(error);
 
-        alert(
-            "Gagal memuat laporan."
-        );
+        showToast("Gagal memuat laporan.", "danger");
 
     }
 

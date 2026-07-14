@@ -108,7 +108,7 @@ export function renderInvoice(order) {
         tbody.innerHTML += `
             <tr>
 
-                <td>${item.product}</td>
+                <td>${item.product.name || "-"}</td>
 
                 <td class="text-center">
                     ${item.qty}

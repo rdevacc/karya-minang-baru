@@ -14,6 +14,11 @@ import {
     hideCategoryModal
 } from "./category-ui.js";
 
+import { showToast }
+from "../utils/toast.js";
+
+import { setButtonLoading } from "../utils/button.js";
+
 let categories = [];
 
 let deleteId = null;
@@ -87,7 +92,11 @@ async function submitForm(event) {
 
     event.preventDefault();
 
-    saveButton.disabled = true;
+    setButtonLoading(
+        saveButton,
+        true,
+        'Menyimpan...'
+    );
 
     try {
 
@@ -103,10 +112,12 @@ async function submitForm(event) {
         if (id) {
 
             await updateCategory(id, formData);
+            showToast("Kategori berhasil diperbarui.", "success");
 
         } else {
 
             await createCategory(formData);
+            showToast("Kategori berhasil ditambahkan.", "success");
 
         }
 
@@ -120,12 +131,14 @@ async function submitForm(event) {
 
         console.error(error);
 
-        alert(error.message);
+        showToast(error.message, "danger");
 
+    }finally {
+        setButtonLoading(
+            saveButton,
+            false
+        );
     }
-
-    saveButton.disabled = false;
-
 }
 
 function bindEditButtons() {
@@ -187,7 +200,10 @@ async function confirmDelete() {
 
     }
 
-    deleteButton.disabled = true;
+    setButtonLoading(
+        saveButton,
+        true
+    );
 
     try {
 
@@ -203,11 +219,14 @@ async function confirmDelete() {
 
         console.error(error);
 
-        alert(error.message);
+        showToast(error.message, "danger");
 
     }
 
-    deleteButton.disabled = false;
+    setButtonLoading(
+        saveButton,
+        false
+    );
 
 }
 
