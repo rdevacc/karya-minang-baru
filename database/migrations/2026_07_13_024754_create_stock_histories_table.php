@@ -25,7 +25,7 @@ return new class extends Migration
 
             $table->integer('qty');
 
-            $table->string('note')->nullable();
+            $table->string('description')->nullable();
 
             $table->timestamps();
         });

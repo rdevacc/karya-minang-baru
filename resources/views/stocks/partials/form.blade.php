@@ -56,8 +56,8 @@
 
                         <input
                             type="number"
-                            id="quantity"
-                            name="quantity"
+                            id="qty"
+                            name="qty"
                             class="form-control"
                             min="1"
                             required>

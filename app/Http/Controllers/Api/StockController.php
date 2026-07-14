@@ -39,7 +39,7 @@ class StockController extends Controller
                 'product_id' => $product->id,
                 'type' => 'in',
                 'qty' => $request->qty,
-                'note' => $request->note,
+                'description' => $request->description,
             ]);
 
         });

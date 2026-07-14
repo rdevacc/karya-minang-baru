@@ -78,7 +78,7 @@ export function renderStockHistory(histories) {
 
                 <span class="badge bg-success">
 
-                    +${history.quantity}
+                    +${history.qty}
 
                 </span>
 

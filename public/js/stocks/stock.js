@@ -18,7 +18,7 @@ const form = document.getElementById("stockForm");
 
 const productSelect = document.getElementById("productId");
 
-const quantityInput = document.getElementById("quantity");
+const quantityInput = document.getElementById("qty");
 
 const descriptionInput = document.getElementById("description");
 

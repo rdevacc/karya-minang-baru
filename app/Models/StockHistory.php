@@ -11,7 +11,7 @@ class StockHistory extends Model
         'product_id',
         'type',
         'qty',
-        'note',
+        'description',
     ];
 
     public function product(): BelongsTo
