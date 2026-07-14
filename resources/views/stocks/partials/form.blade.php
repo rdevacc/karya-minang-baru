@@ -1,0 +1,103 @@
+<div class="card shadow-sm border-0">
+
+    <div class="card-header bg-white">
+
+        <h5 class="mb-0">
+
+            Tambah Stok
+
+        </h5>
+
+    </div>
+
+    <div class="card-body">
+
+        <form id="stockForm">
+
+            <div class="row">
+
+                <div class="col-md-4">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Produk
+
+                        </label>
+
+                        <select
+                            id="productId"
+                            name="product_id"
+                            class="form-select"
+                            required>
+
+                            <option value="">
+
+                                Pilih Produk
+
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-3">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+
+                            Jumlah
+
+                        </label>
+
+                        <input
+                            type="number"
+                            id="quantity"
+                            name="quantity"
+                            class="form-control"
+                            min="1"
+                            required>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="mb-3">
+
+                <label class="form-label">
+
+                    Keterangan
+
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    class="form-control"
+                    rows="3"
+                    placeholder="Contoh: Restock dari supplier"></textarea>
+
+            </div>
+
+            <button
+                type="submit"
+                class="btn btn-primary"
+                id="btnSaveStock">
+
+                <i class="fas fa-plus me-2"></i>
+
+                Tambah Stok
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
