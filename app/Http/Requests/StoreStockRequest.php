@@ -22,10 +22,10 @@ class StoreStockRequest extends FormRequest
             'qty' => [
                 'required',
                 'integer',
-                'min:1',
+                'not_in:0',
             ],
 
-            'note' => [
+            'description' => [
                 'nullable',
                 'string',
                 'max:255',

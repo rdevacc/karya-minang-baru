@@ -1,10 +1,8 @@
 function formatDate(value) {
 
     return new Intl.DateTimeFormat("id-ID", {
-
         dateStyle: "medium",
         timeStyle: "short"
-
     }).format(new Date(value));
 
 }
@@ -43,8 +41,11 @@ export function renderStockHistory(histories) {
 
         tbody.innerHTML = `
             <tr>
-                <td colspan="5"
-                    class="text-center py-5">
+                <td
+                    colspan="5"
+                    class="text-center py-5 text-muted">
+
+                    <i class="fas fa-box-open fa-2x mb-3 d-block"></i>
 
                     Belum ada riwayat stok.
 
@@ -60,40 +61,50 @@ export function renderStockHistory(histories) {
 
         const row = document.createElement("tr");
 
+        const qty = Number(history.qty);
+
+        const isOut = qty < 0 || history.type === "out";
+
+        const quantity = isOut
+            ? `-${Math.abs(qty)}`
+            : `+${Math.abs(qty)}`;
+
+        const badgeClass = isOut
+            ? "bg-danger"
+            : "bg-success";
+
+        const typeLabel = isOut
+            ? "Stok Keluar"
+            : "Stok Masuk";
+
         row.innerHTML = `
 
             <td>
-
                 ${index + 1}
-
             </td>
 
             <td>
-
                 ${history.product?.name ?? "-"}
-
             </td>
 
             <td>
 
-                <span class="badge bg-success">
+                <span
+                    class="badge ${badgeClass}"
+                    title="${typeLabel}">
 
-                    +${history.qty}
+                    ${quantity}
 
                 </span>
 
             </td>
 
             <td>
-
                 ${history.description ?? "-"}
-
             </td>
 
             <td>
-
                 ${formatDate(history.created_at)}
-
             </td>
 
         `;
@@ -106,6 +117,10 @@ export function renderStockHistory(histories) {
 
 export function resetForm() {
 
-    document.getElementById("stockForm").reset();
+    const form = document.getElementById(
+        "stockForm"
+    );
+
+    form?.reset();
 
 }

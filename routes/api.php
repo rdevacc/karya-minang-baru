@@ -33,6 +33,7 @@ Route::prefix('v1')->group(function () {
 
     Route::get('stocks/history',[StockController::class, 'history']);
     Route::post('stocks/in', [StockController::class, 'store']);
+    Route::post('stocks/out', [StockController::class, 'stockOut']);
 
     Route::get('reports',[ReportController::class, 'index']
 );

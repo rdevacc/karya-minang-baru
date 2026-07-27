@@ -1,7 +1,8 @@
 import {
     getProducts,
     getStockHistory,
-    storeStock
+    storeStock,
+    storeStockOut
 } from "./stock-service.js";
 
 import {
@@ -91,34 +92,76 @@ async function submitForm(event) {
     setButtonLoading(
         saveButton,
         true,
-        'Menyimpan...'
+        "Menyimpan..."
     );
 
     try {
 
         const formData = new FormData(form);
 
-        await storeStock(formData);
+        const quantity = Number(
+            formData.get("qty")
+        );
+
+        if (quantity === 0) {
+
+            showToast(
+                "Jumlah stok tidak boleh 0.",
+                "danger"
+            );
+
+            return;
+
+        }
+
+        if (quantity < 0) {
+
+            formData.set(
+                "qty",
+                Math.abs(quantity)
+            );
+
+            await storeStockOut(formData);
+
+            showToast(
+                "Stok berhasil dikurangi.",
+                "success"
+            );
+
+        } else {
+
+            await storeStock(formData);
+
+            showToast(
+                "Stok berhasil ditambahkan.",
+                "success"
+            );
+
+        }
 
         resetForm();
 
-        await loadHistory();
+        await loadProducts();
 
-        showToast("Stok berhasil ditambahkan.", "success");
+        await loadHistory();
 
     } catch (error) {
 
         console.error(error);
 
-        showToast(error.message, "danger");
+        showToast(
+            error.message,
+            "danger"
+        );
 
     } finally {
+
         setButtonLoading(
             saveButton,
             false
         );
+
     }
 
 }
-
 window.refreshStockHistory = loadHistory;

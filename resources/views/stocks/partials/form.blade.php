@@ -59,8 +59,11 @@
                             id="qty"
                             name="qty"
                             class="form-control"
-                            min="1"
                             required>
+
+                        <div class="form-text">
+                            Gunakan angka positif untuk menambah stok dan angka negatif untuk mengurangi stok.
+                        </div>
 
                     </div>
 
@@ -90,9 +93,9 @@
                 class="btn btn-primary"
                 id="btnSaveStock">
 
-                <i class="fas fa-plus me-2"></i>
+                <i class="fas fa-boxes-stacked me-2"></i>
 
-                Tambah Stok
+                Atur Stok
 
             </button>
 

@@ -49,6 +49,45 @@ class StockController extends Controller
         ]);
     }
 
+    
+    public function stockOut(StoreStockRequest $request)
+    {
+        return DB::transaction(function () use ($request) {
+
+            $product = Product::lockForUpdate()
+                ->findOrFail($request->product_id);
+
+            if ($product->stock < $request->qty) {
+
+                return response()->json([
+                    'message' => 'Stok produk tidak mencukupi.',
+                ], 422);
+            }
+
+            $product->decrement(
+                'stock',
+                $request->qty
+            );
+
+            StockHistory::create([
+                'product_id' => $product->id,
+                'type' => 'out',
+                'qty' => $request->qty,
+                'description' => $request->description
+                    ?? 'Pengurangan stok manual',
+            ]);
+
+            return response()->json([
+                'message' => 'Stok berhasil dikurangi.',
+                'data' => [
+                    'product_id' => $product->id,
+                    'stock' => $product->fresh()->stock,
+                ],
+            ]);
+        });
+    }
+
+
     /**
      * Display the specified resource.
      */

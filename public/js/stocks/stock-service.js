@@ -49,3 +49,15 @@ export async function storeStock(formData) {
     });
 
 }
+
+export async function storeStockOut(formData) {
+
+    return request(`${STOCK_URL}/out`, {
+
+        method: "POST",
+
+        body: formData
+
+    });
+
+}
